@@ -28,14 +28,14 @@ syn match     rustAssert      "\<assert\(\w\)*!" contained
 syn match     rustPanic       "\<panic\(\w\)*!" contained
 syn keyword   rustKeyword     async
 syn keyword   rustKeyword     break
-syn keyword   rustKeyword     box nextgroup=rustBoxPlacement skipwhite skipempty
+" syn keyword   rustKeyword     box nextgroup=rustBoxPlacement skipwhite skipempty
 syn keyword   rustKeyword     continue
 syn keyword   rustKeyword     crate
 syn keyword   rustKeyword     extern nextgroup=rustExternCrate,rustObsoleteExternMod skipwhite skipempty
 syn keyword   rustKeyword     fn nextgroup=rustFuncName skipwhite skipempty
 syn keyword   rustKeyword     in impl let
 syn keyword   rustKeyword     macro
-syn keyword   rustKeyword     pub nextgroup=rustPubScope skipwhite skipempty
+" syn keyword   rustKeyword     pub nextgroup=rustPubScope skipwhite skipempty
 syn keyword   rustKeyword     return
 syn keyword   rustKeyword     yield
 syn keyword   rustSuper       super
@@ -93,7 +93,7 @@ syn keyword   rustTrait       Drop Fn FnMut FnOnce
 "syn keyword rustFunction drop
 
 " Reexported types and traits {{{3
-syn keyword rustTrait Box
+" syn keyword rustTrait Box
 syn keyword rustTrait ToOwned
 syn keyword rustTrait Clone
 syn keyword rustTrait PartialEq PartialOrd Eq Ord
@@ -101,13 +101,13 @@ syn keyword rustTrait AsRef AsMut Into From
 syn keyword rustTrait Default
 syn keyword rustTrait Iterator Extend IntoIterator
 syn keyword rustTrait DoubleEndedIterator ExactSizeIterator
-syn keyword rustEnum Option
-syn keyword rustEnumVariant Some None
-syn keyword rustEnum Result
-syn keyword rustEnumVariant Ok Err
+" syn keyword rustEnum Option
+" syn keyword rustEnumVariant Some None
+" syn keyword rustEnum Result
+" syn keyword rustEnumVariant Ok Err
 syn keyword rustTrait SliceConcatExt
 syn keyword rustTrait String ToString
-syn keyword rustTrait Vec
+" syn keyword rustTrait Vec
 
 " Other syntax {{{2
 syn keyword   rustSelf        self
