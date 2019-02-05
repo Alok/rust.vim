@@ -110,7 +110,6 @@ syn keyword rustTrait String ToString
 " syn keyword rustTrait Vec
 
 " Other syntax {{{2
-syn keyword   rustSelf        self
 syn keyword   rustBoolean     true false
 
 " If foo::bar changes to foo.bar, change this ("::" to "\.").

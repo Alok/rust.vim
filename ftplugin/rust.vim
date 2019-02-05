@@ -90,7 +90,6 @@ augroup rust.vim
 
     if has('conceal') && get(g:, 'rust_conceal', 0)
         let b:rust_set_conceallevel=1
-        setlocal conceallevel=2
     endif
 
     " Motion Commands {{{1
@@ -161,7 +160,6 @@ augroup rust.vim
                                 \|unlet b:rust_set_foldmethod
                                 \|endif
                                 \|if exists('b:rust_set_conceallevel')
-                                    \|setlocal conceallevel<
                                     \|unlet b:rust_set_conceallevel
                                     \|endif
                                     \|unlet! b:rust_last_rustc_args b:rust_last_args
