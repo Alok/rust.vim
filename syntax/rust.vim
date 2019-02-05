@@ -26,16 +26,14 @@ syn match rustExistentialContextual /\<existential\_s\+type/ transparent contain
 
 syn match     rustAssert      "\<assert\(\w\)*!" contained
 syn match     rustPanic       "\<panic\(\w\)*!" contained
-syn keyword   rustKeyword     async
+syn match     rustKeyword     "\<async\%(\s\|\n\)\@="
 syn keyword   rustKeyword     break
-" syn keyword   rustKeyword     box nextgroup=rustBoxPlacement skipwhite skipempty
 syn keyword   rustKeyword     continue
 syn keyword   rustKeyword     crate
 syn keyword   rustKeyword     extern nextgroup=rustExternCrate,rustObsoleteExternMod skipwhite skipempty
 syn keyword   rustKeyword     fn nextgroup=rustFuncName skipwhite skipempty
 syn keyword   rustKeyword     in impl let
 syn keyword   rustKeyword     macro
-" syn keyword   rustKeyword     pub nextgroup=rustPubScope skipwhite skipempty
 syn keyword   rustKeyword     return
 syn keyword   rustKeyword     yield
 syn keyword   rustSuper       super
@@ -93,7 +91,6 @@ syn keyword   rustTrait       Drop Fn FnMut FnOnce
 "syn keyword rustFunction drop
 
 " Reexported types and traits {{{3
-" syn keyword rustTrait Box
 syn keyword rustTrait ToOwned
 syn keyword rustTrait Clone
 syn keyword rustTrait PartialEq PartialOrd Eq Ord
@@ -101,13 +98,8 @@ syn keyword rustTrait AsRef AsMut Into From
 syn keyword rustTrait Default
 syn keyword rustTrait Iterator Extend IntoIterator
 syn keyword rustTrait DoubleEndedIterator ExactSizeIterator
-" syn keyword rustEnum Option
-" syn keyword rustEnumVariant Some None
-" syn keyword rustEnum Result
-" syn keyword rustEnumVariant Ok Err
 syn keyword rustTrait SliceConcatExt
 syn keyword rustTrait String ToString
-" syn keyword rustTrait Vec
 
 " Other syntax {{{2
 syn keyword   rustBoolean     true false
@@ -241,8 +233,8 @@ if !exists("b:current_syntax_embed")
     " possible to trick it if you try hard, and indented code blocks aren’t
     " supported because Markdown is a menace to parse and only mad dogs and
     " Englishmen would try to handle that case correctly in this syntax file).
-    syn region rustCommentLinesDocRustCode matchgroup=rustCommentDocCodeFence start='^\z(\s*//[!/]\s*```\)[^A-Za-z0-9_-]*\%(\%(should_panic\|no_run\|ignore\|allow_fail\|rust\|test_harness\|compile_fail\|E\d\{4}\)\%([^A-Za-z0-9_-]\+\|$\)\)*$' end='^\z1$' keepend contains=@RustCodeInComment,rustCommentLineDocLeader
-    syn region rustCommentBlockDocRustCode matchgroup=rustCommentDocCodeFence start='^\z(\%(\s*\*\)\?\s*```\)[^A-Za-z0-9_-]*\%(\%(should_panic\|no_run\|ignore\|allow_fail\|rust\|test_harness\|compile_fail\|E\d\{4}\)\%([^A-Za-z0-9_-]\+\|$\)\)*$' end='^\z1$' keepend contains=@RustCodeInComment,rustCommentBlockDocStar
+    syn region rustCommentLinesDocRustCode matchgroup=rustCommentDocCodeFence start='^\z(\s*//[!/]\s*```\)[^A-Za-z0-9_-]*\%(\%(should_panic\|no_run\|ignore\|allow_fail\|rust\|test_harness\|compile_fail\|E\d\{4}\|edition201[58]\)\%([^A-Za-z0-9_-]\+\|$\)\)*$' end='^\z1$' keepend contains=@RustCodeInComment,rustCommentLineDocLeader
+    syn region rustCommentBlockDocRustCode matchgroup=rustCommentDocCodeFence start='^\z(\%(\s*\*\)\?\s*```\)[^A-Za-z0-9_-]*\%(\%(should_panic\|no_run\|ignore\|allow_fail\|rust\|test_harness\|compile_fail\|E\d\{4}\|edition201[58]\)\%([^A-Za-z0-9_-]\+\|$\)\)*$' end='^\z1$' keepend contains=@RustCodeInComment,rustCommentBlockDocStar
     " Strictly, this may or may not be correct; this code, for example, would
     " mishighlight:
     "
